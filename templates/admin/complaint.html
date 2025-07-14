@@ -1,0 +1,160 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="">#}
+{#  <table width="200" border="1">#}
+{#    <tr>#}
+{#      <td>username</td>#}
+{#      <td>complaint</td>#}
+{#      <td>complaintdate</td>#}
+{#      <td>reply</td>#}
+{##}
+{#    </tr>#}
+{#       {% for i in data %}#}
+{#    <tr>#}
+{#      <td>&nbsp;{{ i.USER.uname}}</td>#}
+{#      <td> {{ i.complaint }}</td>#}
+{#      <td>{{ i.complaintdate }}</td>#}
+{#      <td>{{ i.reply }}</td>#}
+{##}
+{#      <td>{{ i.id }}</td>#}
+{#        {% if i.reply == "pending"  %}#}
+{#      <td><a href="/reply_send_get/{{ i.id }}">reply</a></td>#}
+{#    {% else %}#}
+{#    <td>{{ i.reply }}</td>#}
+{#    {% endif %}#}
+{#    </tr>#}
+{#       {% endfor %}#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+
+
+{% extends "admin/indexsub.html" %}
+
+{% block body %}
+
+
+<!-- External CSS -->
+<style type="text/css">
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 20px;
+  }
+
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+
+  .form-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    margin: 20px auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  tr:hover {
+    background-color: #f9f9f9;
+  }
+
+  td {
+    color: #333;
+  }
+
+  td a {
+    color: #4CAF50;
+    text-decoration: none;
+  }
+
+  td a:hover {
+    color: #388E3C;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    table {
+      width: 100%;
+      font-size: 14px;
+    }
+
+    th, td {
+      padding: 10px;
+    }
+
+    h1 {
+      font-size: 1.5em;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<h1>User Complaints</h1>
+
+<div class="form-container">
+  <form id="form1" name="form1" method="post" action="">
+    <table>
+      <tr>
+        <th>Username</th>
+        <th>Complaint</th>
+        <th>Complaint Date</th>
+        <th>Reply</th>
+        <th>Action</th>
+      </tr>
+
+      <!-- Loop to display complaints -->
+      {% for i in data %}
+        <tr>
+          <td>{{ i.USERNAME.uname }}</td>
+          <td>{{ i.complaint }}</td>
+          <td>{{ i.date }}</td>
+          <td>{{ i.replay }}</td>
+
+          <!-- Check if the reply is pending and show "Reply" link -->
+          {% if i.replay == "pending" %}
+            <td><a href="/reply_send_get/{{ i.id }}">Reply</a></td>
+          {% else %}
+            <td>{{ i.replay }}</td>
+          {% endif %}
+        </tr>
+      {% empty %}
+        <!-- If no data exists -->
+        <tr>
+          <td colspan="5" style="text-align: center;">No complaints available.</td>
+        </tr>
+      {% endfor %}
+    </table>
+  </form>
+</div>
+
+</body>
+</html>
+{% endblock %}

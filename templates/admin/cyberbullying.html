@@ -1,0 +1,132 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="">#}
+{#  <table width="200" border="1">#}
+{#    <tr>#}
+{#      <td>username</td>#}
+{#      <td>post image </td>#}
+{#      <td>bullying word </td>#}
+{#      <td>details</td>#}
+{#    </tr>#}
+{#      {% for i in data %}#}
+{#    <tr>#}
+{#      <td>&nbsp;{{ i.USER.uname }}</td>#}
+{#      <td>&nbsp;{{ i.POST.image }}</td>#}
+{#      <td>{{ i.comment }}</td>#}
+{#      <td>{{ i.type }}</td>#}
+{#    </tr>#}
+{#      {% endfor %}#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+
+{% extends "admin/indexsub.html" %}
+
+{% block body %}
+
+
+
+<!-- External CSS -->
+<style type="text/css">
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 20px;
+  }
+
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+
+  .form-container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    margin: 20px auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #FF5733; /* Orange color for header */
+    color: white;
+  }
+
+  tr:hover {
+    background-color: #f9f9f9;
+  }
+
+  td img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+
+  td a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  td a:hover {
+    color: #45a049;
+  }
+
+  .bullying-type {
+    color: #ff4444;
+    font-weight: bold;
+  }
+
+</style>
+</head>
+
+<body>
+
+<h1>Bullying Report</h1>
+
+<div class="form-container">
+  <form id="form1" name="form1" method="post" action="">
+    <table>
+      <tr>
+        <th>Username</th>
+        <th>Post Image</th>
+        <th>Bullying Word</th>
+        <th>Details</th>
+      </tr>
+      {% for i in data %}
+        <tr>
+          <td>{{ i.USERNAME.uname }}</td>
+          <td><img src="{{ i.POSTID.image.url }}" alt="Post Image" /></td>
+          <td class="bullying-type">{{ i.comment }}</td>
+          <td>{{ i.type }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  </form>
+</div>
+
+</body>
+</html>
+
+
+{% endblock %}

@@ -1,0 +1,122 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="">#}
+{#  <table width="200" border="1">#}
+{#    <tr>#}
+{#      <td>username</td>#}
+{#      <td>feedback</td>#}
+{#      <td>date</td>#}
+{#    </tr>#}
+{#      {% for i in data %}#}
+{#    <tr>#}
+{#      <td>{{ i.user.uname  }}</td>#}
+{#      <td>&nbsp;{{ i.feedback }}</td>#}
+{#      <td>&nbsp;{{ i.date }}</td>#}
+{#    </tr>#}
+{#      {% endfor %}#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+
+
+{% extends "admin/indexsub.html" %}
+
+{% block body %}
+
+
+
+
+<!-- External CSS -->
+<style type="text/css">
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 20px;
+  }
+
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+
+  .form-container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    margin: 20px auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  tr:hover {
+    background-color: #f9f9f9;
+  }
+
+  td {
+    color: #333;
+  }
+
+  td a {
+    color: #4CAF50;
+    text-decoration: none;
+  }
+
+  td a:hover {
+    color: #388E3C;
+  }
+
+</style>
+</head>
+
+<body>
+
+<h1>User Feedback</h1>
+
+<div class="form-container">
+  <form id="form1" name="form1" method="post" action="">
+    <table>
+      <tr>
+        <th>Username</th>
+        <th>Feedback</th>
+        <th>Date</th>
+        <th>Rating</th>
+      </tr>
+      {% for i in data %}
+        <tr>
+          <td>{{ i.USERNAME.uname }}</td>
+          <td>{{ i.feedback }}</td>
+          <td>{{ i.date }}</td>
+          <td>{{ i.rating }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  </form>
+</div>
+
+</body>
+</html>
+
+{% endblock %}

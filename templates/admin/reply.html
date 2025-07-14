@@ -1,0 +1,123 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="/reply_send">#}
+{#  <table width="200" border="1">#}
+{#    <tr>#}
+{#      <td>reply#}
+{#        <label>#}
+{#        <textarea name="textarea"></textarea>#}
+{#      </label></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><label>#}
+{#        <div align="center">#}
+{#          <input type="submit" name="Submit" value="send" />#}
+{#          </div>#}
+{#      </label></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Reply to Complaint</title>
+
+<!-- External CSS -->
+<style type="text/css">
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 20px;
+  }
+
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+
+  .form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+
+  td {
+    padding: 12px;
+    text-align: left;
+    color: #333;
+  }
+
+  textarea {
+    width: 100%;
+    height: 120px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    resize: vertical;
+  }
+
+  input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+
+  .center {
+    text-align: center;
+  }
+</style>
+</head>
+
+<body>
+
+<h1>Reply to Complaint</h1>
+
+<div class="form-container">
+  <form id="form1" name="form1" method="post" action="/reply_send">
+    <table>
+      <tr>
+        <td>
+          <label for="replyTextarea">Your Reply</label><br/>
+          <textarea name="textarea" id="replyTextarea" placeholder="Enter your reply here..."></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td class="center">
+          <input type="submit" name="Submit" value="Send" />
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+
+</body>
+</html>

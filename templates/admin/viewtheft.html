@@ -1,0 +1,128 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="">#}
+{#  <table width="200" border="1">#}
+{#    <tr>#}
+{#      <td>theft username</td>#}
+{#      <td>post image </td>#}
+{#      <td> post uploaded user</td>#}
+{#    </tr>#}
+{#      {% for i in data %}#}
+{#    <tr>#}
+{#      <td>{{ i.USER.uname }}</td>#}
+{#      <td>{{ i.POST.image }}</td>#}
+{#      <td>{{ i.POST.USER.uname }}</td>#}
+{#    </tr>#}
+{#      {% endfor %}#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+
+
+
+
+
+{% extends "admin/indexsub.html" %}
+
+{% block body %}
+
+
+
+
+<!-- External CSS -->
+<style type="text/css">
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 20px;
+  }
+
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+
+  .form-container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    margin: 20px auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  tr:hover {
+    background-color: #f2f2f2;
+  }
+
+  td img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+
+  td a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  td a:hover {
+    color: #45a049;
+  }
+
+</style>
+</head>
+
+<body>
+
+<h1>Theft User Post Report</h1>
+
+<div class="form-container">
+  <form id="form1" name="form1" method="post" action="">
+    <table>
+      <tr>
+        <th>Theft Username</th>
+        <th>Post Image</th>
+
+      </tr>
+      {% for i in data %}
+        <tr>
+          <td>{{ i.USER.uname }}</td>
+          <td><img src="{{ i.POST.image.url }}" alt="Post Image" /></td>
+
+        </tr>
+      {% endfor %}
+    </table>
+  </form>
+</div>
+
+</body>
+</html>
+
+
+{% endblock %}

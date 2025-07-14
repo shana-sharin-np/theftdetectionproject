@@ -1,0 +1,159 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="">#}
+{#  <table width="258" border="1">#}
+{#    <tr>#}
+{#      <td>Name</td>#}
+{#      <td>place</td>#}
+{#      <td>pin</td>#}
+{#      <td>phone</td>#}
+{#      <td>email</td>#}
+{#      <td>image</td>#}
+{#      <td colspan="2">block/unblock</td>#}
+{#    </tr>#}
+{#      {% for i in data %}#}
+{#    <tr>#}
+{#      <td>&nbsp;{{ i.uname }}</td>#}
+{#      <td>{{ i.place }}</td>#}
+{#      <td>{{ i.pin }}</td>#}
+{#      <td>&nbsp;{{ i.phone }}</td>#}
+{#      <td>&nbsp;{{ i.email }}</td>#}
+{#      <td>&nbsp;{{ i.image }}</td>#}
+{#      <td><a href="/block_users/{{ i.LOGIN.id }}">block</a></td>#}
+{#      <td><a href="/unblock_users/{{ i.LOGIN.id }}">unblock</a></td>#}
+{#    </tr>#}
+{#      {% endfor %}#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+
+
+{% extends "admin/indexsub.html" %}
+
+{% block body %}
+
+<!-- External CSS -->
+<style type="text/css">
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 20px;
+  }
+
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+
+  table {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  tr:hover {
+    background-color: #f2f2f2;
+  }
+
+  td a {
+    text-decoration: none;
+    color: #fff;
+    background-color: #f44336;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+
+  td a:hover {
+    background-color: #e53935;
+  }
+
+  .block-btn {
+    background-color: #f44336;
+  }
+
+  .unblock-btn {
+    background-color: #4CAF50;
+  }
+
+  .block-btn:hover {
+    background-color: #e53935;
+  }
+
+  .unblock-btn:hover {
+    background-color: #388E3C;
+  }
+
+  .form-container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+</style>
+</head>
+
+<body>
+
+<h1>User Management</h1>
+
+<div class="form-container">
+  <form id="form1" name="form1" method="post" action="">
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Place</th>
+        <th>Pin</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Image</th>
+        <th colspan="2">Block/Unblock</th>
+      </tr>
+      {% for i in data %}
+        <tr>
+          <td>{{ i.uname }}</td>
+          <td>{{ i.place }}</td>
+          <td>{{ i.pin }}</td>
+          <td>{{ i.phone }}</td>
+          <td>{{ i.email }}</td>
+          <td><img src="{{ i.image.url }}" width="200px" height="200px"> </td>
+          <td>
+              {% if i.LOGIN.type == 'user' %}
+              <a href="/block_users/{{ i.LOGIN.id }}" class="block-btn">Block</a>
+              {% else %}
+                  <a href="/unblock_users/{{ i.LOGIN.id }}" class="unblock-btn">Unblock</a>
+              {% endif %}
+          </td>
+
+        </tr>
+      {% endfor %}
+    </table>
+  </form>
+</div>
+
+{% endblock %}
+
+
+
+
+
